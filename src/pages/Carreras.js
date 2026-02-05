@@ -1,4 +1,4 @@
-import { Layout, Card, Row, Col, Statistic } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import { getParticipantesFin2025 } from '../api/participantesApi';
 import React, { useState, useEffect } from 'react';
 import { Table, Spin, Alert } from 'antd';
@@ -9,7 +9,7 @@ const { Content } = Layout;
 function Carreras() {
 
   const [participantes, setParticipantes] = useState([]);
-  const [total, setTotal] = useState(0);
+  //const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -19,7 +19,7 @@ function Carreras() {
         const data = await getParticipantesFin2025();
         if (data.success) {
           setParticipantes(data.data);
-          setTotal(data.total);
+          //setTotal(data.total);
         } else {
           setError(data.message || 'Error desconocido');
         }
