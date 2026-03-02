@@ -70,16 +70,6 @@ const handleCancel = () => {
     }
 };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.put(`/api/usuarios/${id}`, usuario);
-      alert("Usuario actualizado correctamente");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div
         style={{
