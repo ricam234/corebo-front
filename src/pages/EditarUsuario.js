@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Form, Input, Button, Card, Select, DatePicker, message   } from "antd";
 import { obtenerUsuario, actualizarUsuario } from '../api/participantesApi';
 import { useNavigate } from "react-router-dom";
