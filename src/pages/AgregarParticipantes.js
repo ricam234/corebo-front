@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+
+import { useEffect } from "react";
 import { Form, Input, Button, Card, Select, DatePicker, message   } from "antd";
 import { agregarUsuario } from '../api/participantesApi';
 import { useNavigate } from "react-router-dom";
-import dayjs from "dayjs";
+
 
 const AgregarParticipantes = () => {
   
