@@ -16,7 +16,7 @@ const EditarUsuario = () => {
 
 const navigate = useNavigate();
 const handleCancel = () => {
-  navigate("/carreras");
+  navigate("/participantes");
 };
     
   const [form] = Form.useForm();

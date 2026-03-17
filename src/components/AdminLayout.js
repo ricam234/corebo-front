@@ -80,11 +80,11 @@ function AdminLayout({ children }) {
               children: [                        // ← aquí van los ítems del submenú
                     {
                     key: '1-1',
-                    label: <Link to="/dashboard/reportes">Lista</Link>,
+                    label: <Link to="/carreras">Agregar</Link>,
                     },
                     {
                     key: '1-2',
-                    label: <Link to="/dashboard/estadisticas">Agregar</Link>,
+                    label: <Link to="/carreras">Carreras</Link>,
                     }
                 ],
             },
@@ -95,11 +95,11 @@ function AdminLayout({ children }) {
               children: [                        // ← aquí van los ítems del submenú
                     {
                     key: '2-1',
-                    label: <Link to="/agregar">Agregar</Link>,
+                    label: <Link to="/agregar">Agregar Participante</Link>,
                     },
                     {
                     key: '2-2',
-                    label: <Link to="/carreras">Carrera Fin de Año 2025</Link>,
+                    label: <Link to="/participantes">Participantes</Link>,
                     }
                 ],
             },

@@ -2,6 +2,7 @@ import './App.css';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login'; 
 import Carreras from './pages/Carreras'; 
+import Participantes from './pages/Participantes'; 
 import AgregarParticipantes from './pages/AgregarParticipantes'; 
 import EditarUsuario from "./pages/EditarUsuario";
 import NotFound from './pages/NotFound';
@@ -36,11 +37,11 @@ function App() {
         }
       />
       <Route
-        path="/carreras"
+        path="/participantes"
         element={
           <ProtectedRoute>
             <AdminLayout>
-              <Carreras />
+              <Participantes />
             </AdminLayout>
           </ProtectedRoute>
         }
@@ -51,6 +52,16 @@ function App() {
           <ProtectedRoute>
             <AdminLayout>
               <AgregarParticipantes />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/carreras"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <Carreras />
             </AdminLayout>
           </ProtectedRoute>
         }

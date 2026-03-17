@@ -10,7 +10,7 @@ const AgregarParticipantes = () => {
 const { Option } = Select;
 const navigate = useNavigate();
 const handleCancel = () => {
-  navigate("/carreras");
+  navigate("/participantes");
 };
     
 const [form] = Form.useForm();

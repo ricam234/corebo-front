@@ -2,7 +2,7 @@ import axiosInstance from './axiosInstance';
 
 export const getParticipantesFin2025 = async () => {
   try {
-    const response = await axiosInstance.get('/fin2025WS');
+    const response = await axiosInstance.get('/api/carrerasListado');
     return response.data; // { success, data: [...], total, ... }
   } catch (error) {
     // Puedes lanzar error personalizado o loguear
@@ -82,5 +82,16 @@ export const enviarEmail = async (datos) => {
     return response.data;
   } catch (error) {
     throw error;
+  }
+};
+
+export const getCarreras = async () => {
+  try {
+    const response = await axiosInstance.get('/api/carreras');
+    return response.data; // { success, data: [...], total, ... }
+  } catch (error) {
+    // Puedes lanzar error personalizado o loguear
+    console.error('Error al obtener las carreras:', error);
+    throw error; // o return { success: false, message: error.message }
   }
 };
