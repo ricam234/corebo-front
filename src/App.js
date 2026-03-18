@@ -4,18 +4,17 @@ import Login from './pages/Login';
 import Carreras from './pages/Carreras'; 
 import Participantes from './pages/Participantes'; 
 import AgregarParticipantes from './pages/AgregarParticipantes'; 
+import EditarCarrera from './pages/EditarCarrera'; 
+import AgregarCarreras from './pages/AgregarCarreras'; 
 import EditarUsuario from "./pages/EditarUsuario";
 import NotFound from './pages/NotFound';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminLayout from './components/AdminLayout';
-
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = true;
-  
    if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  
   return children;
 };
 
@@ -67,11 +66,31 @@ function App() {
         }
       />
       <Route
+        path="/agregarCarreras"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AgregarCarreras />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/usuarios/editar/:id"
         element={
           <ProtectedRoute>
             <AdminLayout>
               <EditarUsuario  />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/carrera/editar/:id"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <EditarCarrera  />
             </AdminLayout>
           </ProtectedRoute>
         }

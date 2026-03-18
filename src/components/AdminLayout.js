@@ -80,7 +80,7 @@ function AdminLayout({ children }) {
               children: [                        // ← aquí van los ítems del submenú
                     {
                     key: '1-1',
-                    label: <Link to="/carreras">Agregar</Link>,
+                    label: <Link to="/agregarCarreras">Agregar</Link>,
                     },
                     {
                     key: '1-2',

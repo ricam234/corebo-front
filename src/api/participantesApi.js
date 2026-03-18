@@ -95,3 +95,12 @@ export const getCarreras = async () => {
     throw error; // o return { success: false, message: error.message }
   }
 };
+
+export const setCarreras = async (datos) => {
+   try {
+    const response = await axiosInstance.post('/usuarios', datos);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

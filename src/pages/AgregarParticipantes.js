@@ -4,39 +4,36 @@ import { Form, Input, Button, Card, Select, DatePicker, message   } from "antd";
 import { agregarUsuario } from '../api/participantesApi';
 import { useNavigate } from "react-router-dom";
 
-
-const AgregarParticipantes = () => {
-  
-const { Option } = Select;
-const navigate = useNavigate();
-const handleCancel = () => {
-  navigate("/participantes");
-};
+  const AgregarParticipantes = () => {
+  const { Option } = Select;
+  const navigate = useNavigate();
+  const handleCancel = () => {
+    navigate("/participantes");
+  };
     
-const [form] = Form.useForm();
-  useEffect(() => {
-}, []);
-
+  const [form] = Form.useForm();
+    useEffect(() => {
+  }, []);
 
   const onFinish = async (values) => {
-  try {
-    const datosEnviar = {
-      ...values,
-      nacimiento: values.nacimiento
-        ? values.nacimiento.format("YYYY-MM-DD")
-        : null 
-    };
-    console.log("Datos a enviar:", datosEnviar);
-    const resultado = await agregarUsuario(datosEnviar);
-    if (resultado.inscrito) {
-        message.success("¡Participante Agregado correctamente!");
+    try {
+      const datosEnviar = {
+        ...values,
+        nacimiento: values.nacimiento
+          ? values.nacimiento.format("YYYY-MM-DD")
+          : null 
+      };
+      console.log("Datos a enviar:", datosEnviar);
+      const resultado = await agregarUsuario(datosEnviar);
+      if (resultado.inscrito) {
+          message.success("¡Participante Agregado correctamente!");
 
-        navigate("/carreras");
-    }
+          navigate("/carreras");
+      }
     } catch (error) {
-        console.error("Error al guardar:", error);
+          console.error("Error al guardar:", error);
     }
-};
+  };
 
   return (
     <div
