@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Form, Input, Button, Card, Select, DatePicker, message   } from "antd";
+import { Form, Input, Button, Card  } from "antd";
 import { setCarreras } from '../api/participantesApi';
 import { useNavigate } from "react-router-dom";
 const AgregarCarreras = () => {
@@ -11,10 +10,8 @@ const AgregarCarreras = () => {
     
   const onFinish = async (values) => {
     try {
-      
       console.log("Datos a enviar:", values);
-      const resultado = await setCarreras(values);
-      
+      //const resultado = await setCarreras(values);
     } catch (error) {
           console.error("Error al guardar:", error);
     }
@@ -68,13 +65,10 @@ const AgregarCarreras = () => {
                 >
                     Cancelar
                 </Button>
-
-
             </Form>
         </Card>
         </div>
       );
-
 };
 
 export default AgregarCarreras;

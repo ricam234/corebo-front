@@ -1,7 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Form, Input, Button, Card, Select, DatePicker, message   } from "antd";
-import { obtenerUsuario, actualizarUsuario } from '../api/participantesApi';
+
+import { Form, Input, Button, Card   } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const EditarCarrera = () => {
@@ -17,8 +15,6 @@ const onFinish = async (values) => {
           console.error("Error al guardar:", error);
     }
   };
-
-
 return (
     <div
         style={{
