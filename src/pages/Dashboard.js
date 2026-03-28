@@ -4,6 +4,13 @@ import { Layout, Card, Row, Col, Statistic } from 'antd';
 const { Content } = Layout;
 
 function Dashboard() {
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    window.location.href = "/login";
+    return null;
+  }
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Content style={{ padding: '24px', background: '#f0f2f5' }}>

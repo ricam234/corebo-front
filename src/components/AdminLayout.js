@@ -1,6 +1,7 @@
 // src/components/AdminLayout.js
 import React, { useState } from 'react';
 import { Layout, Menu, Button, theme } from 'antd';
+import { logout } from "../services/auth";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -135,7 +136,7 @@ function AdminLayout({ children }) {
 
           {/* Espacio para usuario / logout */}
           <div>
-            <Button type="text" icon={<LogoutOutlined />}>
+            <Button type="text" onClick={logout} icon={<LogoutOutlined />}>
               Cerrar sesión
             </Button>
           </div>

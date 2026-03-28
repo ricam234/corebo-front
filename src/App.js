@@ -1,3 +1,4 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login'; 
@@ -8,91 +9,84 @@ import EditarCarrera from './pages/EditarCarrera';
 import AgregarCarreras from './pages/AgregarCarreras'; 
 import EditarUsuario from "./pages/EditarUsuario";
 import NotFound from './pages/NotFound';
-import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminLayout from './components/AdminLayout';
-const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = true;
-   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-  return children;
-};
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <Routes>
       {/* Rutas públicas */}
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Navigate to="/dashboard" replace />} /> {/* redirige raíz a dashboard si logueado */}
+      
       {/* Rutas protegidas (admin) */}
       <Route
         path="/dashboard"
         element={
-          <ProtectedRoute>
+          <PrivateRoute>
             <AdminLayout>
               <Dashboard />
             </AdminLayout>
-          </ProtectedRoute>
+          </PrivateRoute>
         }
       />
       <Route
         path="/participantes"
         element={
-          <ProtectedRoute>
+          <PrivateRoute>
             <AdminLayout>
               <Participantes />
             </AdminLayout>
-          </ProtectedRoute>
+          </PrivateRoute>
         }
       />
       <Route
         path="/agregar"
         element={
-          <ProtectedRoute>
+          <PrivateRoute>
             <AdminLayout>
               <AgregarParticipantes />
             </AdminLayout>
-          </ProtectedRoute>
+          </PrivateRoute>
         }
       />
       <Route
         path="/carreras"
         element={
-          <ProtectedRoute>
+          <PrivateRoute>
             <AdminLayout>
               <Carreras />
             </AdminLayout>
-          </ProtectedRoute>
+          </PrivateRoute>
         }
       />
       <Route
         path="/agregarCarreras"
         element={
-          <ProtectedRoute>
+          <PrivateRoute>
             <AdminLayout>
               <AgregarCarreras />
             </AdminLayout>
-          </ProtectedRoute>
+          </PrivateRoute>
         }
       />
       <Route
         path="/usuarios/editar/:id"
         element={
-          <ProtectedRoute>
+          <PrivateRoute>
             <AdminLayout>
               <EditarUsuario  />
             </AdminLayout>
-          </ProtectedRoute>
+          </PrivateRoute>
         }
       />
       <Route
         path="/carrera/editar/:id"
         element={
-          <ProtectedRoute>
+          <PrivateRoute>
             <AdminLayout>
               <EditarCarrera  />
             </AdminLayout>
-          </ProtectedRoute>
+          </PrivateRoute>
         }
       />
       {/* Ruta 404 */}

@@ -27,44 +27,41 @@ const AgregarCarreras = () => {
         >
 
         <Card title="" style={{ width: "100%" }}>
-            <h2>Agregar Carreras</h2>
-            <Form
-                form={form}
-                layout="vertical"
-                onFinish={onFinish}
-                htmlType="submit"
+        <h2>Agregar Carreras</h2>
+        <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        htmlType="submit"
+        >        
+        <Form.Item
+        label="Nombre"
+        name="nombre"
+        rules={[
+            { required: true, message: "El nombre es obligatorio" }
+        ]}
+        >
+        <Input placeholder="Nombre" />
+        </Form.Item>
+        <Button
+            type="primary"
             
-            >        
-                <Form.Item
-                label="Nombre"
-                name="nombre"
-                rules={[
-                    { required: true, message: "El nombre es obligatorio" }
-                ]}
-                >
-                <Input placeholder="Nombre" />
-                </Form.Item>
-
-                 <Button
-                    type="primary"
-                    
-                    htmlType="submit"
-                    style={{ marginRight: 10 }}
-                    >
-                    Guardar
-                </Button>
-
-                <Button 
-                    onClick={handleCancel} 
-                    style={{
-                        backgroundColor: "#ff4d4f",
-                        borderColor: "#ff4d4f",
-                        color: "#fff"
-                    }}
-                >
-                    Cancelar
-                </Button>
-            </Form>
+            htmlType="submit"
+            style={{ marginRight: 10 }}
+            >
+            Guardar
+        </Button>
+        <Button 
+                onClick={handleCancel} 
+                style={{
+                    backgroundColor: "#ff4d4f",
+                    borderColor: "#ff4d4f",
+                    color: "#fff"
+                }}
+        >
+            Cancelar
+        </Button>
+        </Form>
         </Card>
         </div>
       );
