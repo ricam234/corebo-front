@@ -11,7 +11,7 @@ export default function Login() {
     setError("");
     try {
       const response = await axios.post(
-        "http://localhost/public/api/login",
+        "https://www.corebocuautla.com.mx/admin/public/api/login",
         {
           email,
           password,
