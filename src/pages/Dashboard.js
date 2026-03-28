@@ -1,8 +1,6 @@
 
 import { Layout, Card, Row, Col, Statistic } from 'antd';
-
 const { Content } = Layout;
-
 function Dashboard() {
 
   const token = localStorage.getItem("token");

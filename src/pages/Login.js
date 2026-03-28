@@ -1,5 +1,5 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { login } from "../services/auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -9,18 +9,11 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
+
     try {
-      const response = await axios.post(
-        "https://www.corebocuautla.com.mx/admin/public/api/login",
-        {
-          email,
-          password,
-        }
-      );
-
+      const data = await login(email, password);
       // guardar token
-      localStorage.setItem("token", response.data.token);
-
+      localStorage.setItem("token", data.token);
       // redirigir
       window.location.href = "/dashboard";
     } catch (err) {
@@ -28,11 +21,22 @@ export default function Login() {
     }
   };
 
+  useEffect(() => {
+    document.body.style.backgroundImage = 
+      "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://www.corebocuautla.com.mx/admin/public/images/backgroud.jpg')";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundSize = "cover";
+
+    // limpiar cuando salgas del componente
+    return () => {
+      document.body.style.backgroundImage = "";
+    };
+  }, []);
+
   return (
     <div style={styles.container}>
       <form onSubmit={handleLogin} style={styles.form}>
-        <h2>Iniciar sesión</h2>
-
+        <h2 style={{ color: "#fff", textAlign:"center"}}>Iniciar sesión</h2>
         {error && <p style={styles.error}>{error}</p>}
 
         <input
@@ -67,10 +71,8 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "#f4f6f8",
   },
   form: {
-    background: "#fff",
     padding: "2rem",
     borderRadius: "10px",
     boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
@@ -78,11 +80,18 @@ const styles = {
     display: "flex",
     flexDirection: "column",
   },
+  inicio: {
+    color: "#fff",
+  },
   input: {
     marginBottom: "1rem",
     padding: "10px",
     borderRadius: "5px",
     border: "1px solid #ccc",
+    background: "transparent",
+    borderColor: "white",
+    borderStyle: "solid",
+    borderWidth: "4px",
   },
   button: {
     padding: "10px",
@@ -96,4 +105,5 @@ const styles = {
     color: "red",
     marginBottom: "10px",
   },
+  
 };
