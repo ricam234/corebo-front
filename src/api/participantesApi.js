@@ -104,3 +104,49 @@ export const setCarreras = async (datos) => {
     throw error;
   }
 };
+
+export const activarCarrera = async (id) => {
+  try {
+    const response = await axiosInstance.put('/api/carreras/activar', { id });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const obtenerCarrera = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/api/carrera/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const actualizarCarrera = async (id, datos) => {
+  try {
+    const response = await axiosInstance.put(`/api/actualizarcarrera/${id}`, datos);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+export const agregarCarreras = async (datos) => {
+   try {
+    const response = await axiosInstance.post('/api/agregarCarrera', datos);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const eliminarCarrera = async (id) => {
+  try {
+    const response = await axiosInstance.delete(`/api/eliminarcarrera/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

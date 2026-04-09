@@ -1,5 +1,6 @@
-import { Form, Input, Button, Card  } from "antd";
+import { Form, Input, Button, Card, DatePicker, message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { agregarCarreras } from '../api/participantesApi';
 const AgregarCarreras = () => {
     const [form] = Form.useForm();
     const navigate = useNavigate();
@@ -8,13 +9,27 @@ const AgregarCarreras = () => {
     };
     
   const onFinish = async (values) => {
-    try {
-      console.log("Datos a enviar:", values);
-      //const resultado = await setCarreras(values);
-    } catch (error) {
-          console.error("Error al guardar:", error);
+  try {
+    const datosEnviar = {
+      ...values,
+      fechaInicio: values.fechaInicio
+        ? values.fechaInicio.format("YYYY-MM-DD")
+        : null,
+      fechaFin: values.fechaFin
+        ? values.fechaFin.format("YYYY-MM-DD")
+        : null,
+    };
+    console.log("Datos a enviar:", datosEnviar);
+    const resultado = await agregarCarreras(datosEnviar);
+    if (resultado.data.id) {
+        message.success("¡Carrera agregada correctamente!");
+
+        navigate("/carreras");
     }
-  };
+    } catch (error) {
+        console.error("Error al guardar:", error);
+    }
+}
   return (
         <div
         style={{
@@ -25,7 +40,6 @@ const AgregarCarreras = () => {
         background: "#f5f5f5"
         }}
         >
-
         <Card title="" style={{ width: "100%" }}>
         <h2>Agregar Carreras</h2>
         <Form
@@ -42,6 +56,35 @@ const AgregarCarreras = () => {
         ]}
         >
         <Input placeholder="Nombre" />
+        </Form.Item>
+        <Form.Item
+            label="Fecha de Inicio"
+            name="fechaInicio"
+            rules={[{ required: true, message: "La fecha es obligatoria" }]}
+            >
+            <DatePicker
+                style={{ width: "100%" }}
+                format="DD/MM/YYYY"
+            />
+        </Form.Item>
+        <Form.Item
+            label="Fecha de Fin"
+            name="fechaFin"
+            rules={[{ required: true, message: "La fecha es obligatoria" }]}
+            >
+            <DatePicker
+                style={{ width: "100%" }}
+                format="DD/MM/YYYY"
+            />
+        </Form.Item>
+        <Form.Item
+          label="Año"
+          name="anio"
+          rules={[
+            { required: true, message: "El Año es obligatorio" }
+          ]}
+        >
+        <Input placeholder="Año" />
         </Form.Item>
         <Button
             type="primary"

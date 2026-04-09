@@ -5,8 +5,9 @@ import Login from './pages/Login';
 import Carreras from './pages/Carreras'; 
 import Participantes from './pages/Participantes'; 
 import AgregarParticipantes from './pages/AgregarParticipantes'; 
-import EditarCarrera from './pages/EditarCarrera'; 
+import EditarCarreras from './pages/EditarCarreras'; 
 import AgregarCarreras from './pages/AgregarCarreras'; 
+import Pago from './pages/Pago'; 
 import EditarUsuario from "./pages/EditarUsuario";
 import NotFound from './pages/NotFound';
 import AdminLayout from './components/AdminLayout';
@@ -50,6 +51,16 @@ function App() {
         }
       />
       <Route
+        path="/pago"
+        element={
+          <PrivateRoute>
+            <AdminLayout>
+              <Pago />
+            </AdminLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/carreras"
         element={
           <PrivateRoute>
@@ -84,7 +95,7 @@ function App() {
         element={
           <PrivateRoute>
             <AdminLayout>
-              <EditarCarrera  />
+              <EditarCarreras  />
             </AdminLayout>
           </PrivateRoute>
         }
