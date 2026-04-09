@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://www.corebocuautla.com.mx/admin/public/";
+const API_URL = "https://www.corebocuautla.com.mx/admin/public";
 
 export const logout = () => {
   localStorage.removeItem("token");
