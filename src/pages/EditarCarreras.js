@@ -8,14 +8,14 @@ const EditarCarreras = ({ onSuccess }) => {
     const { id } = useParams();
     const [form] = Form.useForm();
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
+    
     const handleCancel = () => {
         navigate("/carreras");
     };
     
     const onFinish = async (values) => {
     try {
-      setLoading(true);
+      //setLoading(true);
 
       const response = await actualizarCarrera(id, {
         nombre: values.nombre,
@@ -35,7 +35,7 @@ const EditarCarreras = ({ onSuccess }) => {
     } catch (error) {
       message.error('Error al guardar los cambios');
     } finally {
-      setLoading(false);
+     //setLoading(false);
     }
   };
 
@@ -44,7 +44,7 @@ const EditarCarreras = ({ onSuccess }) => {
   
     const fetchData = async () => {
         try {
-        setLoading(true);
+        //setLoading(true);
         const response = await obtenerCarrera(id);
         console.log(response);
         
@@ -63,7 +63,7 @@ const EditarCarreras = ({ onSuccess }) => {
             console.log(err);
             message.error('Error al cargar la carrera');
         } finally {
-            setLoading(false);
+            //setLoading(false);
         }
     };
   

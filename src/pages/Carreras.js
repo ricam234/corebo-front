@@ -1,7 +1,7 @@
 import { Layout, Row, Col } from 'antd';
 import { getCarreras, activarCarrera, eliminarCarrera  } from '../api/participantesApi';
 import { useState, useEffect } from 'react';
-import { Table, Spin, Alert, Space, Button, Popconfirm, Input, Modal, Radio, Tag , message} from 'antd';
+import { Table, Spin, Alert, Space, Button, Popconfirm, Input, Modal, Radio, message} from 'antd';
 import { EditOutlined, DeleteOutlined, SearchOutlined, CheckCircleOutlined, CloseCircleOutlined, SettingOutlined } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,7 @@ function Carreras() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCarrera, setSelectedCarrera] = useState(null);
  
-  const [saving, setSaving] = useState(false);
+  //const [saving, setSaving] = useState(false);
 
 
   const showModal = async () => {
@@ -32,9 +32,7 @@ function Carreras() {
       }
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+  
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -83,7 +81,7 @@ function Carreras() {
     console.log('ID seleccionado:', selectedCarrera);
     console.log('Carrera completa:', carreraSeleccionada);
     try {
-      setSaving(true);
+      //setSaving(true);
       const response = await activarCarrera(selectedCarrera);
       
       if (response.success) {
@@ -109,7 +107,7 @@ function Carreras() {
       console.error('Error:', error);
       message.error(error.response?.data?.message || 'Error al guardar la carrera');
     } finally {
-      setSaving(false);
+      //setSaving(false);
     }
 
     // Aquí puedes hacer lo que necesites con la carrera seleccionada
